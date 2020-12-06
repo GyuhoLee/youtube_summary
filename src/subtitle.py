@@ -11,10 +11,8 @@ def komoran_tokenize(sent):
     words = [w for w in words if ('/NN' in w or '/XR' in w or '/VA' in w or '/VV' in w)]
     return words
 
-def subtitle(video_url, topk_size):
+def subTitle(video_url, topk_size):
     #youtube url의 자막 -> xml으로 가져오기
-    topk_size = 30
-    video_url = 'https://www.youtube.com/watch?v=ecUWKU_v318'
     yt = YouTube(video_url)
     title = yt.title
     description = yt.description
@@ -28,7 +26,7 @@ def subtitle(video_url, topk_size):
     for child in root.findall("text"):
         text = child.text.replace('\n', ' ')
         texts.append(text)
-    topk_size = texts.size() * 100 // topk_size
+    topk_size = len(texts) * topk_size // 100
 
     #Komoran을 통해 형태소 단위로 분리 후 태깅
     komoran = Komoran('STABLE')
@@ -53,14 +51,14 @@ def subtitle(video_url, topk_size):
     bias[0] = 5
     keysents = summarizer.summarize(texts, topk=topk_size, bias=bias)
     keysents.sort(key=itemgetter(0))
-    first = True
-    ret = ''
+    First = True
+    ret1 = ''
+    ret2 = ''
     for _, _, sent in keysents:
         sent = sent.replace('&#39;', "'")
-        ret = ret + sent
-        if first:
-            ret += '\n'
-            first = False
+        if First:
+            ret1 = sent
+            First = False
         else:
-            ret += ' '
-    return ret;
+            ret2 = ret2 + sent + ' '
+    return [ret1, ret2]

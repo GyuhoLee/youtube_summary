@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>유튜브 자막 요약기</title>
+<meta charset="utf-8" />  
+  </head>
+  <body>  
+    <div id="container" style="margin-left: 10%;">
+        <h1>유튜브 자막 요약기</h1>
+        <div id="subtitle">
+            <div>만든이 : 이규호</div>
+            <a href="https://github.com/GyuhoLee/youtube_summary"  target="_blank">github 바로가기</a>
+            <br><br>
+            <div id="desc">요약할 유튜브 영상의 URL과 압축률을 입력해주세요.</div>
+        </div><br>
+        <form action="http://127.0.0.1:5000/result" method="POST">
+            <label for="url"> URL :</label>
+            <input type="text" name="Url" placeholder="유튜브 url 입력" style="width:40%; height:40px;"/><br><br>
+            <label for="zip"> 압축률 :</label>
+            <input type="text" name="Zip" placeholder="압축률(%) 입력" style="width:10%; height:30px;"/>
+            <input type="submit" value="요약하기" style="height:30px; width:7%;"></inpout>
+        </form>
+    </div>
+  </body>
+</html>
