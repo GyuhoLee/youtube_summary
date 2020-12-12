@@ -9,7 +9,9 @@ Youtube_Summary는 다음과 같은 상황에서 사용하는 것을 추천드�
 
 ## Preview
 
+![입력](https://raw.githubusercontent.com/GyuhoLee/youtube_summary/master/img/input.png)
 
+![출력](https://raw.githubusercontent.com/GyuhoLee/youtube_summary/master/img/output.png)
 
 
 
